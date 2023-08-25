@@ -1,7 +1,6 @@
 # peckgame
-game me and midas are working on
 
-yeet my skurt
+A simple typing game in a windows form, created in Visual Studios and written in C#.
 
 Right now, it will load a windows desktop application called "Peck."
 you click the start button, and a word should appear with a textbox.
