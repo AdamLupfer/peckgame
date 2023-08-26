@@ -34,6 +34,7 @@ namespace DesktopApp1
             this.Wordlbl = new System.Windows.Forms.Label();
             this.Countlbl = new System.Windows.Forms.Label();
             this.mistakelbl = new System.Windows.Forms.Label();
+            this.scoreLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Startbutn
@@ -93,12 +94,23 @@ namespace DesktopApp1
             this.mistakelbl.Text = "Mistakes:";
             this.mistakelbl.Visible = false;
             // 
+            // scoreLabel
+            // 
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.Location = new System.Drawing.Point(390, 35);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(41, 13);
+            this.scoreLabel.TabIndex = 6;
+            this.scoreLabel.Text = "Score: ";
+            this.scoreLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(533, 292);
+            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.mistakelbl);
             this.Controls.Add(this.Countlbl);
             this.Controls.Add(this.Wordlbl);
@@ -109,7 +121,6 @@ namespace DesktopApp1
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Peck";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +133,7 @@ namespace DesktopApp1
         private System.Windows.Forms.Label Wordlbl;
         private System.Windows.Forms.Label Countlbl;
         private System.Windows.Forms.Label mistakelbl;
+        private System.Windows.Forms.Label scoreLabel;
     }
 }
 

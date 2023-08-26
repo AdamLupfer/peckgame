@@ -35,11 +35,8 @@ namespace DesktopApp1
         string newlabel = "";
         string strLine = "";
         string[] strWordlist = new string[0];
+        int score = 0;
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
         
         //Start game function
         private void button1_Click(object sender, EventArgs e)
@@ -68,6 +65,9 @@ namespace DesktopApp1
             {
                 strReader.Close();
             }
+
+            scoreLabel.Visible = true;
+            scoreLabel.Text = "Score: " + score.ToString();
             Startbutn.Visible = false;
 
             Wordlbl.Visible = true;
@@ -98,7 +98,7 @@ namespace DesktopApp1
                     if (counter == (strWordlist.Length - 1))
                     {
                         //Win conditions
-                        MessageBox.Show("You won!", "Winner!", MessageBoxButtons.OK);
+                        MessageBox.Show("You won!", "Winner! Youre final Score: " + score.ToString(), MessageBoxButtons.OK);
 
                         Startbutn.Visible = true;
 
@@ -117,6 +117,8 @@ namespace DesktopApp1
 
                         textBox1.Visible = false;
                         textBox1.Clear();
+                        scoreLabel.Visible = false;
+                        scoreLabel.Text = "Score: ";
 
                         newdisplayword = Wordlbl.Text;
                         
@@ -125,6 +127,7 @@ namespace DesktopApp1
                     }
                     else
                     {
+                        // Valid input conditions
                         Wordlbl.Text = strWordlist[(counter + 1)];
                         counter++;
                         textBox1.Clear();
@@ -132,6 +135,10 @@ namespace DesktopApp1
                         Countlbl.Text = "Words Pecked: " + counter.ToString();
                         newdisplayword = Wordlbl.Text;
                         newlabel = "";
+
+                        //score calculator
+                        score += 25;
+                        scoreLabel.Text = "Score: " + score.ToString();
 
                         displayword = Wordlbl.Text.Select(x => x.ToString()).ToArray();
                     }
@@ -175,6 +182,11 @@ namespace DesktopApp1
                             e.Handled = true;
                             mistakecount++;
                             mistakelbl.Text = "Mistakes: " + mistakecount;
+                            if (score > 0)
+                            {
+                                score -= 1;
+                                scoreLabel.Text = "Score: " + score.ToString();
+                            }
                             
                         }
                         
