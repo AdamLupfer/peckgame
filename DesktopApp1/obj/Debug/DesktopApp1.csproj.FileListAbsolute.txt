@@ -18,3 +18,13 @@ C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\peckgame-master\
 C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.csproj.CoreCompileInputs.cache
 C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.exe
 C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.pdb
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\bin\Debug\DesktopApp1.exe.config
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\bin\Debug\DesktopApp1.exe
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\bin\Debug\DesktopApp1.pdb
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.csproj.AssemblyReference.cache
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.Form1.resources
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.Properties.Resources.resources
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.csproj.GenerateResource.cache
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.csproj.CoreCompileInputs.cache
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.exe
+C:\Users\midas\Documents\Programming\_New_Stuff\peckgame-master\DesktopApp1\obj\Debug\DesktopApp1.pdb

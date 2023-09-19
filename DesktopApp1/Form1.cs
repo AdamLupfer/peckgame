@@ -24,25 +24,20 @@ namespace DesktopApp1
             InitializeComponent();
         }
         
-
+        //GLOBAL VARIABLES
         StreamReader strReader = null;
 
-        
         int mistakecount = 0;
         int counter = 0;
-        string[] displayword;
-        string newdisplayword;
+        string[] strDisplayedWordArray;
+        string strNewDisplayedWord;
         string newlabel = "";
         string strLine = "";
         string[] strWordlist = new string[0];
         int score = 0;
 
-        
-        //Start game function
-        private void button1_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-
-
             try
             {
                 FileStream file = new FileStream(Application.StartupPath + @"\Populated_wordlist.txt", FileMode.OpenOrCreate, FileAccess.Read);
@@ -65,6 +60,15 @@ namespace DesktopApp1
             {
                 strReader.Close();
             }
+        }
+
+
+        
+        //Start game function
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
 
             scoreLabel.Visible = true;
             scoreLabel.Text = "Score: " + score.ToString();
@@ -79,9 +83,9 @@ namespace DesktopApp1
             textBox1.Visible = true;
             textBox1.Focus();
 
-            newdisplayword = Wordlbl.Text;
+            strNewDisplayedWord = Wordlbl.Text;
             
-            displayword = Wordlbl.Text.Select(x => x.ToString()).ToArray();
+            strDisplayedWordArray = Wordlbl.Text.Select(x => x.ToString()).ToArray();
 
         }
         
@@ -90,59 +94,60 @@ namespace DesktopApp1
         {
 
             
-            if (textBox1.Text == newdisplayword)
+            if (textBox1.Text == strNewDisplayedWord.ToLower() && textBox1.Text == strWordlist[counter].ToLower())
             {
-                
-                if (textBox1.Text == strWordlist[counter])
+            
+                if (counter == (strWordlist.Length - 1))
                 {
-                    if (counter == (strWordlist.Length - 1))
-                    {
-                        //Win conditions
-                        MessageBox.Show("You won!", "Winner! Youre final Score: " + score.ToString(), MessageBoxButtons.OK);
+                    score += 100;
+                    scoreLabel.Text = "Score: " + score.ToString();
+                    //Win conditions
+                    MessageBox.Show("You won!", "Winner! Your Final Score: " + score.ToString(), MessageBoxButtons.OK);
 
-                        Startbutn.Visible = true;
+                    Startbutn.Visible = true;
 
-                        Wordlbl.Text = strWordlist[0];
-                        
-                        //resetting game screen
-                        counter = 0;
-                        newlabel = "";
+                    Wordlbl.Text = strWordlist[0];
 
-                        Wordlbl.Visible = false;
+                    //resetting game screen
+                    score = 0;
+                    counter = 0;
+                    newlabel = "";
 
-                        Countlbl.Text = "Words Pecked: ";
-                        Countlbl.Visible = false;
-                        mistakelbl.Text = "Mistakes: ";
-                        mistakelbl.Visible = false;
+                    Wordlbl.Visible = false;
 
-                        textBox1.Visible = false;
-                        textBox1.Clear();
-                        scoreLabel.Visible = false;
-                        scoreLabel.Text = "Score: ";
+                    Countlbl.Text = "Words Pecked: ";
+                    Countlbl.Visible = false;
+                    mistakelbl.Text = "Mistakes: ";
+                    mistakelbl.Visible = false;
 
-                        newdisplayword = Wordlbl.Text;
-                        
-                        displayword = Wordlbl.Text.Select(x => x.ToString()).ToArray();
-                        
-                    }
-                    else
-                    {
-                        // Valid input conditions
-                        Wordlbl.Text = strWordlist[(counter + 1)];
-                        counter++;
-                        textBox1.Clear();
-                        textBox1.Focus();
-                        Countlbl.Text = "Words Pecked: " + counter.ToString();
-                        newdisplayword = Wordlbl.Text;
-                        newlabel = "";
+                    textBox1.Visible = false;
+                    textBox1.Clear();
+                    scoreLabel.Visible = false;
+                    scoreLabel.Text = "Score: ";
 
-                        //score calculator
-                        score += 25;
-                        scoreLabel.Text = "Score: " + score.ToString();
-
-                        displayword = Wordlbl.Text.Select(x => x.ToString()).ToArray();
-                    }
+                    strNewDisplayedWord = Wordlbl.Text;
+                    
+                    strDisplayedWordArray = Wordlbl.Text.Select(x => x.ToString()).ToArray();
+                    
                 }
+                else
+                {
+                    // Valid input conditions
+                    Wordlbl.Text = strWordlist[(counter + 1)];
+                    counter++;
+                    textBox1.Clear();
+                    textBox1.Focus();
+                    Countlbl.Text = "Words Pecked: " + counter.ToString();
+                    strNewDisplayedWord = Wordlbl.Text;
+                    newlabel = "";
+
+                    //score calculator
+                    score += 25;
+                    scoreLabel.Text = "Score: " + score.ToString();
+
+                    strDisplayedWordArray = Wordlbl.Text.Select(x => x.ToString()).ToArray();
+                }
+            
 
             }
             
@@ -152,24 +157,23 @@ namespace DesktopApp1
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             
-            var entrytext = textBox1.Text.Select(x => x.ToString()).ToArray();
+            var entrytext = textBox1.Text.Select(x => x.ToString().ToLower()).ToArray();
 
             int entryindex = (entrytext.Length - 1);
             
                 {
-                    if (entrytext.Length <= displayword.Length)
+                    if (entrytext.Length <= strDisplayedWordArray.Length)
                     {
 
-                        if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), displayword[(entrytext.Length)]))
+                        if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), strDisplayedWordArray[(entrytext.Length)].ToLower()))
                         {
-                            // Stop the character from being entered into the control since it is illegal.
                             e.Handled = false;
 
-                            displayword[(entrytext.Length)] = "_";
+                            strDisplayedWordArray[(entrytext.Length)] = "_";
                         
-                            for (int n = 0; n < newdisplayword.Length; n++)
+                            for (int n = 0; n < strNewDisplayedWord.Length; n++)
                             {
-                                newlabel += displayword[n].ToString();
+                                newlabel += strDisplayedWordArray[n].ToString();
                             }
 
                         Wordlbl.Text = newlabel;
@@ -179,6 +183,7 @@ namespace DesktopApp1
                         }
                         else
                         {
+                            // Stop the character from being entered into the control since it is illegal.
                             e.Handled = true;
                             mistakecount++;
                             mistakelbl.Text = "Mistakes: " + mistakecount;
@@ -194,5 +199,6 @@ namespace DesktopApp1
                 }
 
         }
+
     }
 }
